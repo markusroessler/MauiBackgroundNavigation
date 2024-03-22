@@ -6,7 +6,15 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		MainPage = new NavigationPage();
+		Start();
 	}
+
+    private async void Start()
+    {
+		await Task.Delay(2000);
+		var navPage = (NavigationPage)MainPage!;
+		await navPage.PushAsync(new MainPage());
+    }
 }
 
